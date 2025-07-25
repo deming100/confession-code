@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+        <!-- Add these audio elements in the head section -->
+    <audio id="bgMusic" loop>
+      <source src="aUntitled video - Made with Clipchamp.mp3" type="audio/mpeg">
+      <!-- Replace with your actual background music file -->
+    </audio>
+    
+    <audio id="memoryMusic">
+      <source src="@asumuh - its just you, my dear (lyrics).mp3" type="audio/mpeg">
+      <!-- Replace with your actual memory gallery music file -->
+    </audio>
+    <audio id="yesMusic">
+      <source src="dw.mp3" type="audio/mpeg">
+      <!-- Replace with your actual memory gallery music file -->
+    </audio>
+    <link rel="preload" href="@asumuh - its just you, my dear (lyrics).mp3" as="audio">
+
+    
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0a0a2a, #1a1a4a);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+        }
+        .flower {
+            font-size: 20px;
+            transition: all 2s ease-out;
+            margin-bottom: 30px;
+            z-index: 2;
+        }
+        .message {
+            font-size: 24px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            z-index: 2;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+            z-index: 2;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+            z-index: 2;
+        }
+        #yes {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+        }
+        #no {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        #memoriesBtn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            display: none;
+        }
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: float 3s linear forwards;
+        }
+        .memory-gallery {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 20;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 60px 0 20px; /* Added top padding for button space */
+            overflow-y: auto;
+        }
+        .memory-gallery img {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            scroll-margin: 20px; /* Better scroll positioning */
+
+        }
+        .close-gallery {
+            position: fixed; /* Changed from absolute to fixed */
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 30; /* Higher than gallery's z-index */
+            background: rgba(0, 0, 0, 0.5); /* Optional: better visibility */
+            padding: 5px 15px;
+            border-radius: 50%;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            opacity: 0;
+        }
+        @keyframes float {
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Twinkling Stars Background -->
+    <div id="stars"></div>
+
+    <div class="flower">🌱</div>
+    <div class="message">Alex loves Taylor! Do you love me?</div>
+    <div class="buttons">
+        <button id="yes">YES! ❤️</button>
+        <button id="no">No</button>
+    </div>
+    <button id="memoriesBtn">Our Memories 📸</button>
+    
+    <div class="hearts" id="hearts"></div>
+    
+    <!-- Memory Gallery -->
+    <div class="memory-gallery" id="memoryGallery">
+        <span class="close-gallery">✕</span>
+        <img src="20250211_153025.jpg" alt="Our memory 1"> <!-- Replace with your image URLs -->
+        <img src="20250211_153937.jpg" alt="Our memory 2">
+        <img src="20250224_191855.jpg" alt="Our memory 3">
+        <img src="20250329_195702.jpg" alt="Our memory 4">
+        <img src="20250329_200102.jpg" alt="Our memory 5">
+        <img src="20250331_015454.jpg" alt="Our memory 6">
+        <img src="20250404_205029.jpg" alt="Our memory 7">
+        <img src="20250423_173714.jpg" alt="Our memory 8">
+        <img src="20250424_174327.jpg" alt="Our memory 9">
+        <img src="20250504_161549.jpg" alt="Our memory 10">
+        <img src="20250504_162412.jpg" alt="Our memory 11">
+        <img src="20250520_185001.jpg" alt="Our memory 12">
+        <img src="20250522_182209.jpg" alt="Our memory 13">
+        <img src="IMG-20250312-WA0000.jpg" alt="Our memory 14">
+        <img src="IMG-20250424-WA0027.jpg" alt="Our memory 15">
+        <img src="IMG-20250424-WA0051.jpg" alt="Our memory 16">
+        <img src="IMG-20250424-WA0057.jpg" alt="Our memory 17">
+        <img src="IMG-20250424-WA0089.jpg" alt="Our memory 18">
+        <img src="IMG-20250425-WA0057.jpg" alt="Our memory 19">
+        <img src="IMG-20250521-WA0172.jpg" alt="Our memory 20">
+        <img src="IMG_1347.JPG" alt="Our memory 21">
+        <img src="IMG_1456.JPG" alt="Our memory 22">
+        <img src="IMG_1468.JPG" alt="Our memory 23">
+        <img src="IMG_1627.JPG" alt="Our memory 24">
+        <img src="IMG_1631.JPG" alt="Our memory 25">
+        <img src="IMG_1821.JPG" alt="Our memory 26">
+        <img src="IMG_1845.JPG" alt="Our memory 27">
+        <img src="IMG_1850.JPG" alt="Our memory 28">
+        <img src="IMG_1851.JPG" alt="Our memory 29">
+        <img src="IMG_1854.JPG" alt="Our memory 30">
+        <img src="Screenshot_20250420_173109_WhatsApp.jpg" alt="Our memory 31">
+
+
+
+        
+    </div>
+
+    <script>
+    // Personalized names
+    const yourName = "Faggot 1";
+    const herName = "Faggot 2";
+    document.querySelector('.message').textContent = `${yourName} loves ${herName}! Will you be my girlfriend?`;
+
+    // Audio elements
+    const bgMusic = document.getElementById('bgMusic');
+    const memoryMusic = document.getElementById('memoryMusic');
+    
+    // Set volumes and loop
+    bgMusic.volume = 0.3;
+    memoryMusic.volume = 0.5;
+    memoryMusic.loop = true; // Make memory music loop
+
+    // Auto-play background music (new modern approach)
+    document.addEventListener('DOMContentLoaded', () => {
+        const playAudio = async () => {
+            try {
+                await bgMusic.play();
+                console.log("Background music started");
+            } catch (err) {
+                console.log("Auto-play prevented, will start after interaction");
+                // Fallback - start after first click
+                document.addEventListener('click', () => {
+                    bgMusic.play();
+                }, { once: true });
+            }
+        };
+        playAudio();
+    });
+
+    // Twinkling stars
+    function createStars() {
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = `${Math.random() * 3}px`;
+            star.style.height = star.style.width;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.setProperty('--duration', `${2 + Math.random() * 3}s`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            starsContainer.appendChild(star);
+        }
+    }
+    createStars();
+        // Animate flower growth
+        setTimeout(() => {
+            const flower = document.querySelector('.flower');
+            flower.textContent = '🌸';
+            flower.style.fontSize = '100px';
+        }, 500);
+
+        // Add this audio element to your <head> section
+        const celebrationMusic = new Audio("dw.mp3");
+        celebrationMusic.volume = 0.6; // 60% volume
+        celebrationMusic.loop = true;  // Loop the celebration song
+
+        // YES button: Hearts explosion (forever version)
+        document.getElementById('yes').addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            // Music control
+            bgMusic.pause();
+            memoryMusic.pause();
+            celebrationMusic.currentTime = 0;
+            celebrationMusic.play();
+            
+            // Visual effects
+            const hearts = document.getElementById('hearts');
+            hearts.style.display = 'block';
+            document.querySelector('.message').textContent = 'I knew it! I love you more! 💘';
+            document.querySelector('.buttons').style.display = 'none';
+            document.getElementById('memoriesBtn').style.display = 'none';
+
+            // Create initial hearts
+            for (let i = 0; i < 100; i++) {
+                createFloatingHeart(hearts);
+            }
+
+            // Keep adding new hearts periodically
+            const heartInterval = setInterval(() => {
+                createFloatingHeart(hearts);
+            }, 300); // Add a new heart every 300ms
+
+            // Function to create a single forever-floating heart
+            function createFloatingHeart(container) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤️';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.animationDuration = `${5 + Math.random() * 5}s`; // Slower animation
+                container.appendChild(heart);
+                
+                // When animation completes, restart it
+                heart.addEventListener('animationend', () => {
+                    heart.style.top = `${Math.random() * 100}%`;
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.animationDuration = `${5 + Math.random() * 5}s`;
+                });
+            }
+        });
+
+        // NO button: Escape on press with custom messages
+        const noBtn = document.getElementById('no');
+        const noMessages = ["walao", "dun like that leh", "please la", "im on my knees", "really meh"];
+        let messageIndex = 0;
+        
+        noBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent audio init from interfering
+            // Cycle through custom messages
+            noBtn.textContent = noMessages[messageIndex % noMessages.length];
+            messageIndex++;
+            
+            // Move to random position
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${10 + Math.random() * 70}%`;
+            noBtn.style.top = `${10 + Math.random() * 70}%`;
+            
+            // Add shake animation every few clicks
+            if (messageIndex % 3 === 0) {
+                noBtn.style.animation = 'shake 0.5s';
+                setTimeout(() => noBtn.style.animation = '', 500);
+            }
+        });
+
+        // Memories button
+        const memoriesBtn = document.getElementById('memoriesBtn');
+        const memoryGallery = document.getElementById('memoryGallery');
+        const closeGallery = document.querySelector('.close-gallery');
+
+        memoriesBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent audio init from interfering
+            memoryGallery.style.display = 'flex';
+            memoryMusic.currentTime = 0;
+            memoryMusic.play();
+        });
+
+        closeGallery.addEventListener('click', (e) => {
+            e.stopPropagation();
+            memoryGallery.style.display = 'none';
+            memoryMusic.pause();
+        });
+
+        // Close gallery when clicking outside images
+        memoryGallery.addEventListener('click', (e) => {
+            if (e.target === memoryGallery) {
+                memoryGallery.style.display = 'none';
+                memoryMusic.pause();
+            }
+        });
+    </script>
+</body>
+</html>
